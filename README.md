@@ -13,7 +13,7 @@
 ```java
 dependencies {
     ⋯
-    compile 'am.widget:multiactiontextview:1.0.0'
+    compile 'am.widget:multiactiontextview:1.0.1'
     ⋯
 }
 ```
@@ -35,3 +35,6 @@ textView.setText(text, action1, action2, action3);
 ## 注意
 - MultiActionClickableSpan可设置是否拦截View的OnClickListener响应
 - MultiActionClickableSpan可以设置不同的颜色
+
+## 历史
+- [**1.0.0**](https://bintray.com/alexmofer/maven/MultiActionTextView/1.0.0)
