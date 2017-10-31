@@ -1,7 +1,10 @@
 package am.example.multiactiontextview;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,18 +12,27 @@ import android.widget.Toast;
 import am.widget.multiactiontextview.MultiActionClickableSpan;
 import am.widget.multiactiontextview.MultiActionTextView;
 
-public class MultiActionTextViewActivity extends BaseActivity implements View.OnClickListener,
+public class MultiActionTextViewActivity extends AppCompatActivity implements View.OnClickListener,
         MultiActionClickableSpan.OnTextClickedListener {
 
     @Override
-    protected int getContentViewLayoutResources() {
-        return R.layout.activity_multiactiontextview;
-    }
-
-    @Override
-    protected void initResource(Bundle savedInstanceState) {
-        setSupportActionBar(R.id.mat_toolbar);
-        MultiActionTextView textView = (MultiActionTextView) findViewById(R.id.mat_tv_content);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_multiactiontextview);
+        Toolbar mToolbar = findViewById(R.id.mat_toolbar);
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onBackPressed();
+                }
+            });
+            if (getSupportActionBar() != null) {
+                getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            }
+        }
+        MultiActionTextView textView = findViewById(R.id.mat_tv_content);
         final int colorPrimary = ContextCompat.getColor(this, R.color.colorPrimary);
         final int colorAccent = ContextCompat.getColor(this, R.color.colorAccent);
         final int colorRipple = ContextCompat.getColor(this, R.color.colorRipple);

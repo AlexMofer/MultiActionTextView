@@ -1,1 +1,1 @@
-include ':app', ':multiactiontextview'
+include ':app'
