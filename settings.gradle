@@ -1,1 +1,3 @@
+rootProject.name = "MultiActionTextView"
 include ':app'
+include ':multiactiontextview'
